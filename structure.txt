@@ -1,0 +1,17 @@
+<!-- prettier-ignore-start -->
+
+Splash
+  Country input
+
+Weather Page
+  Country input
+  Base info
+    Information component
+      Icon
+      Text
+Sidebar
+  Temperature
+  UV
+  AQI
+
+

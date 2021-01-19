@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import cities from "cities.json";
-import { Coords } from "../App";
+import cities, { CityType } from "cities.json";
+import { Location } from "../App";
 
 type CityProps = {} & CityType;
 type Props = {
-  setLocation: React.Dispatch<React.SetStateAction<Coords>>;
+  setLocation: React.Dispatch<React.SetStateAction<Location>>;
 };
 
 const City: React.FC<CityProps> = ({ name, country }) => {
@@ -17,7 +17,7 @@ const City: React.FC<CityProps> = ({ name, country }) => {
 
 const SearchInputComponent: React.FC<Props> = ({ setLocation }) => {
   const [filteredCities, setFilteredCities] = useState<CityType[]>([]);
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState("Toronto");
   const handleChange = (text: string) => {
     setInputText(text);
     setFilteredCities(
@@ -28,10 +28,9 @@ const SearchInputComponent: React.FC<Props> = ({ setLocation }) => {
   };
   const handleCityClicked = (city: CityType) => {
     setInputText(city.name);
-    setLocation({ lat: +city.lat, lng: +city.lng });
+    setLocation({ lat: +city.lat, lng: +city.lng, city: city.name });
     setFilteredCities([]);
   };
-  const [selectedCity, setSelectedCity] = useState<CityType | null>();
   return (
     <>
       <input onChange={(e) => handleChange(e.target.value)} value={inputText} />

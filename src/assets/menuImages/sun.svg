@@ -1,0 +1,23 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd">
+ <defs>
+  <style type="text/css">.fil0 {fill:black;fill-rule:nonzero}</style>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="402" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <path id="svg_2" d="m203,103c53,0 96,43 96,97c0,53 -43,96 -96,96c-54,0 -97,-43 -97,-96c0,-54 43,-97 97,-97zm0,20c-43,0 -77,34 -77,77c0,42 34,76 77,76c42,0 76,-34 76,-76c0,-43 -34,-77 -76,-77z" class="fil0"/>
+   <path id="svg_3" d="m193,28c0,-13 20,-13 20,0l0,49c0,13 -20,13 -20,0l0,-49z" class="fil0"/>
+   <path id="svg_4" d="m74,85c-9,-9 5,-23 14,-14l35,35c9,9 -5,23 -14,14l-35,-35z" class="fil0"/>
+   <path id="svg_5" d="m31,210c-13,0 -13,-20 0,-20l49,0c13,0 13,20 0,20l-49,0z" class="fil0"/>
+   <path id="svg_6" d="m88,328c-9,9 -23,-5 -14,-14l35,-35c9,-9 23,5 14,14l-35,35z" class="fil0"/>
+   <path id="svg_7" d="m213,371c0,13 -20,13 -20,0l0,-49c0,-13 20,-13 20,0l0,49z" class="fil0"/>
+   <path id="svg_8" d="m331,314c9,9 -5,23 -14,14l-35,-35c-9,-9 5,-23 14,-14l35,35z" class="fil0"/>
+   <path id="svg_9" d="m374,190c13,0 13,20 0,20l-49,0c-13,0 -13,-20 0,-20l49,0z" class="fil0"/>
+   <path id="svg_10" d="m317,71c9,-9 23,5 14,14l-35,35c-9,9 -23,-5 -14,-14l35,-35z" class="fil0"/>
+  </g>
+ </g>
+</svg>

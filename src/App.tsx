@@ -4,6 +4,7 @@ import getWeather from "./services/getWeather";
 import getAQI from "./services/getAQI";
 import SearchInputComponent from "./components/SearchInputComponent";
 import MenuComponent from "./components/MenuComponent";
+import { airMock, weatherMock } from "./components/mock";
 
 export type Location = { lat: number; lng: number; city: string };
 export type ScreenType = "overview" | "temperature" | "aqi" | "uv" | "covid";
@@ -14,14 +15,14 @@ function App() {
     city: "Toronto",
   });
   const [screen, setScreen] = useState<ScreenType>("overview");
-  const [locationInfo, setLocationInfo] = useState();
-  const [airInfo, setAirInfo] = useState();
+  const [weatherInfo, setWeatherInfo] = useState(weatherMock);
+  const [airInfo, setAirInfo] = useState(airMock);
   const [loading, setLoading] = useState(false);
   const getLocationInfo = async () => {
     console.log("fetch");
     if (!location) return;
     setLoading(true);
-    // setLocationInfo(await getWeather({ lat: location.lat, lng: location.lng }));
+    // setWeatherInfo(await getWeather({ lat: location.lat, lng: location.lng }));
     // setAirInfo(await getAQI({ lat: location.lat, lng: location.lng }));
     setLoading(false);
   };
@@ -37,7 +38,7 @@ function App() {
       {loading && "Loading...."}
       <DisplayComponent
         city={location.city}
-        {...{ airInfo, locationInfo, screen }}
+        {...{ weatherInfo, airInfo, screen }}
       />
     </>
   );

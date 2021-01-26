@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ScreenType } from "../App";
-import { getAQIStatus, getTemperatureStatus } from "./statusUtils";
+import { getAQIStatus, getTemperatureStatus, getUVStatus } from "./statusUtils";
 import { TemperatureStatus } from "./types";
 
 const ImageContainer = styled("div")`
@@ -12,13 +12,13 @@ const ImageContainer = styled("div")`
 
 type Props = {
   screen: ScreenType;
-  darkSkyData: any;
-  AQIData: any;
+  weatherInfo: any;
+  airInfo: any;
 };
 type OverviewStatus = {};
 
-type AQIStatus = {};
-type UVStatus = {};
+type AQIStatus = "green" | "yellow" | "orange" | "red" | "purple" | "maroon";
+type UVStatus = "green" | "yellow" | "orange" | "red" | "violet";
 type CovidStatus = {};
 
 const getOverviewImage = (status: OverviewStatus) => {
@@ -49,35 +49,60 @@ const getTemperatureImage = (status: TemperatureStatus) => {
     }
   }
 };
-const getAQIImage = (status: AQIStatus) => {};
-const getUVImage = (status: UVStatus) => {};
+const getAQIImage = (status: AQIStatus) => {
+  switch (status) {
+    case "green":
+      return "green image";
+    case "yellow":
+      return "yellow image";
+    case "orange":
+      return "orange image";
+    case "red":
+      return "red image";
+    case "purple":
+      return "purple image";
+    case "maroon":
+      return "maroon image";
+  }
+};
+const getUVImage = (status: UVStatus) => {
+  switch (status) {
+    case "green":
+      return "green image";
+    case "yellow":
+      return "yellow image";
+    case "orange":
+      return "orange image";
+    case "red":
+      return "red image";
+    case "violet":
+      return "violet image";
+  }
+};
 const getCovidImage = (status: CovidStatus) => {};
 
-const ImageComponent: React.FC<Props> = ({ screen, darkSkyData, AQIData }) => {
+const ImageComponent: React.FC<Props> = ({ screen, weatherInfo, airInfo }) => {
   const image = (screen: ScreenType) => {
     switch (screen) {
       case "overview": {
-        getOverviewImage(darkSkyData.currently.icon);
-        break;
+        return getOverviewImage(weatherInfo.currently.icon);
       }
       case "temperature": {
         const status = getTemperatureStatus(
-          darkSkyData.currently.apparentTemperature
+          weatherInfo.currently.apparentTemperature
         );
-        getTemperatureImage(status);
-        break;
+        return getTemperatureImage(status);
       }
       case "aqi": {
-        const status = getAQIStatus(status);
-        getAQIImage(status);
-        break;
+        const status = getAQIStatus(airInfo.data.aqi);
+        return getAQIImage(status);
       }
       case "uv": {
-        getUVImage(status);
-        break;
+        const status = getUVStatus(weatherInfo.currently.uvIndex);
+        return getUVImage(status);
       }
       case "covid": {
-        getCovidImage(status);
+        // getCovidImage(status);
       }
     }
   };

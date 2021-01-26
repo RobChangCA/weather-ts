@@ -9,6 +9,7 @@ const getAQI = async (coordinates: any) => {
       body: JSON.stringify(coordinates),
     }
   ).then((res) => res.json());
+
   return results;
 };
 

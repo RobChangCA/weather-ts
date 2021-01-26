@@ -25,8 +25,32 @@ export const getTemperatureStatus = (
   }
 };
 
-export const getAQIStatus = (air: any) => {};
+export const getAQIStatus = (air: number) => {
+  if (air < 50) {
+    return "green";
+  }
+  if (air < 100) {
+    return "yellow";
+  }
+  if (air < 150) {
+    return "orange";
+  }
+  if (air < 200) {
+    return "red";
+  }
+  if (air < 300) {
+    return "purple";
+  } else {
+    return "maroon";
+  }
+};
 
-export const getUVStatus = (uv: any) => {};
+export const getUVStatus = (uv: number) => {
+  if (uv < 3) return "green";
+  if (uv < 6) return "yellow";
+  if (uv < 8) return "orange";
+  if (uv < 11) return "red";
+  else return "violet";
+};
 
 export const getCovidStatus = (rate: any) => {};

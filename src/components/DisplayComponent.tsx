@@ -4,7 +4,7 @@ import DetailsComponent from "./DetailsComponent";
 import ImageComponent from "./ImageComponent";
 
 type Props = {
-  locationInfo: any;
+  weatherInfo: any;
   airInfo: any;
   city: string;
   screen: ScreenType;
@@ -12,7 +12,7 @@ type Props = {
 
 const DisplayComponent: React.FC<Props> = ({
   city,
-  locationInfo,
+  weatherInfo,
   airInfo,
   screen,
 }) => {
@@ -20,12 +20,8 @@ const DisplayComponent: React.FC<Props> = ({
     <div>
       <h1>{city}</h1>
       <h2>{screen}</h2>
-      <ImageComponent {...{ screen }} />
+      <ImageComponent {...{ screen, weatherInfo, airInfo }} />
       <DetailsComponent />
-      {/* <pre>
-        {JSON.stringify(locationInfo, null, 4)}
-        {JSON.stringify(airInfo, null, 4)}
-      </pre> */}
     </div>
   );
 };

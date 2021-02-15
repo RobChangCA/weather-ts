@@ -10,7 +10,7 @@ type Props = {
   screen: ScreenType;
 };
 
-const DisplayComponent: React.FC<Props> = ({
+const InfoWrapper: React.FC<Props> = ({
   city,
   weatherInfo,
   airInfo,
@@ -21,9 +21,9 @@ const DisplayComponent: React.FC<Props> = ({
       <h1>{city}</h1>
       <h2>{screen}</h2>
       <ImageComponent {...{ screen, weatherInfo, airInfo }} />
-      <DetailsComponent />
+      <DetailsComponent {...{ screen, weatherInfo, airInfo }} />
     </div>
   );
 };
 
-export default DisplayComponent;
+export default InfoWrapper;

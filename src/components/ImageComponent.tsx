@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ScreenType } from "../App";
 import { getAQIStatus, getTemperatureStatus, getUVStatus } from "./statusUtils";
-import { TemperatureStatus } from "./types";
+import { AQIStatus, TemperatureStatus, UVStatus, WeatherStatus } from "./types";
 
 const ImageContainer = styled("div")`
   height: 400px;
@@ -15,14 +15,42 @@ type Props = {
   weatherInfo: any;
   airInfo: any;
 };
-type OverviewStatus = {};
 
-type AQIStatus = "green" | "yellow" | "orange" | "red" | "purple" | "maroon";
-type UVStatus = "green" | "yellow" | "orange" | "red" | "violet";
 type CovidStatus = {};
 
-const getOverviewImage = (status: OverviewStatus) => {
-  return <h2>{status} </h2>;
+const getWeatherImage = (status: WeatherStatus) => {
+  switch (status) {
+    case "clear-day": {
+      return "clear-day image";
+    }
+    case "clear-night": {
+      return "clear-night image";
+    }
+    case "rain": {
+      return "rain image";
+    }
+    case "snow": {
+      return "snow image";
+    }
+    case "sleet": {
+      return "sleet image";
+    }
+    case "wind": {
+      return "wind image";
+    }
+    case "fog": {
+      return "fog image";
+    }
+    case "cloudy": {
+      return "cloudy image";
+    }
+    case "partly-cloudy-day": {
+      return "partly-cloudy-day image";
+    }
+    case "partly-cloudy-night": {
+      return "partly-cloudy-night image";
+    }
+  }
 };
 const getTemperatureImage = (status: TemperatureStatus) => {
   switch (status) {
@@ -82,10 +110,10 @@ const getUVImage = (status: UVStatus) => {
 const getCovidImage = (status: CovidStatus) => {};
 
 const ImageComponent: React.FC<Props> = ({ screen, weatherInfo, airInfo }) => {
-  const image = (screen: ScreenType) => {
+  const getImage = (screen: ScreenType) => {
     switch (screen) {
-      case "overview": {
-        return getOverviewImage(weatherInfo.currently.icon);
+      case "weather": {
+        return getWeatherImage(weatherInfo.currently.icon);
       }
       case "temperature": {
         const status = getTemperatureStatus(
@@ -106,7 +134,7 @@ const ImageComponent: React.FC<Props> = ({ screen, weatherInfo, airInfo }) => {
       }
     }
   };
-  return <ImageContainer>{image}</ImageContainer>;
+  return <ImageContainer>{getImage(screen)}</ImageContainer>;
 };
 
 export default ImageComponent;

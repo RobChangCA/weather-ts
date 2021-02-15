@@ -1,59 +1,49 @@
 import React from "react";
 import styled from "styled-components";
 import { ScreenType } from "../App";
-import Sun from "../assets/menuImages/sun.svg";
 
-type Props = {
+type MenuComponentProps = {
   screen: ScreenType;
   setScreen: React.Dispatch<React.SetStateAction<ScreenType>>;
 };
-
-type ButtonProps = {
-  text: string;
+type MenuItemProps = {
+  screen: ScreenType;
   selected: boolean;
-  image: string;
+  setScreen: React.Dispatch<React.SetStateAction<ScreenType>>;
 };
-
-const StyledButton = styled("button")<{ selected?: boolean }>`
+export const screens = [
+  "weather",
+  "temperature",
+  "aqi",
+  "uv",
+  "covid",
+] as const;
+type StyledButtonProps = { selected: boolean };
+const StyledButton = styled("button")<StyledButtonProps>`
   height: 200px;
   width: 200px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  &: hover {
-    span {
-      opacity: 1;
-    }
-  }
-  img {
-    width: 100%;
-  }
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+  background: ${(props) => (props.selected ? "blue" : "green")};
 `;
 
-const Button: React.FC<ButtonProps> = ({ image, text, selected }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ screen, selected, setScreen }) => {
   return (
-    <StyledButton selected>
-      <span>{text}</span>
-      <img src={image} alt={text} />
+    <StyledButton selected={selected} onClick={() => setScreen(screen)}>
+      {screen}
     </StyledButton>
   );
 };
 
-const buttons = [{ text: "" }];
-
-const MenuComponent: React.FC<Props> = ({ screen, setScreen }) => {
+const MenuComponent: React.FC<MenuComponentProps> = ({ screen, setScreen }) => {
   return (
-    <>
-      <Button text="test" selected image={Sun} />
-    </>
+    <div>
+      {screens.map((screenItem) => (
+        <MenuItem
+          selected={screenItem === screen}
+          screen={screenItem}
+          setScreen={setScreen}
+        />
+      ))}
+    </div>
   );
 };
 

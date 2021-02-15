@@ -1,3 +1,5 @@
+import { screens } from "./MenuComponent";
+
 export type TemperatureStatus =
   | "hellaCold"
   | "veryCold"
@@ -7,7 +9,7 @@ export type TemperatureStatus =
   | "hot"
   | "veryHot";
 
-export type overviewStatus =
+export type WeatherStatus =
   | "clear-day"
   | "clear-night"
   | "rain"
@@ -18,3 +20,15 @@ export type overviewStatus =
   | "cloudy"
   | "partly-cloudy-day"
   | "partly-cloudy-night";
+
+export type AQIStatus =
+  | "green"
+  | "yellow"
+  | "orange"
+  | "red"
+  | "purple"
+  | "maroon";
+
+export type UVStatus = "green" | "yellow" | "orange" | "red" | "violet";
+
+export type ScreenType = typeof screens[number];
